@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ssh *)",
+      "Bash(rsync *)",
+      "Bash(curl -s https://dolgogae.cloud)",
+      "Bash(git init *)",
+      "Bash(git add *)"
+    ]
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(chmod 600 *)",
+      "Bash(ssh *)",
+      "Bash(rsync *)"
+    ]
+  }
+}

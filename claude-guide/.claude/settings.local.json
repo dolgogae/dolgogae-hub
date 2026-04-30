@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(open:*)",
+      "Bash(grep -E \"Chapter|^--$\")",
+      "Bash(perl -i -pe 's/💎 \\(.+?\\)를 최고로 잘 쓰는 법/$1/g; s/💎 \\(.+?\\)를 제대로 하는 법/$1/g' index.html)",
+      "Bash(perl -i -pe 's/💎 \\(.+?\\)을 최고로 잘 쓰는 법/$1/g; s/💎 \\(.+?\\)의 습관/$1의 습관/g; s/🎯 Claude Code 완벽 정복 — 핵심 요약/완벽 정복 핵심 요약/g' index.html)",
+      "Bash(python3 -m http.server 8899)",
+      "Bash(lsof -ti:8899)",
+      "Bash(xargs kill:*)",
+      "Bash(chmod 600 /Users/sihun/workspace/study/claude-code-mastery/section-indv/SSH_KeyPair-260429211709.pem)",
+      "Bash(ssh -i /Users/sihun/workspace/study/claude-code-mastery/section-indv/SSH_KeyPair-260429211709.pem -o StrictHostKeyChecking=no -o ConnectTimeout=10 ubuntu@1.201.126.11 \"echo 'connected as ubuntu'\")",
+      "Bash(ssh -i /Users/sihun/workspace/study/claude-code-mastery/section-indv/SSH_KeyPair-260429211709.pem -o StrictHostKeyChecking=no -o ConnectTimeout=10 ec2-user@1.201.126.11 \"echo 'connected as ec2-user'\")",
+      "Bash(ssh:*)",
+      "Bash(rsync -avz --progress -e 'ssh -i /Users/sihun/workspace/study/claude-code-mastery/section-indv/SSH_KeyPair-260429211709.pem' '--exclude=*.pem' --exclude=nginx.conf /Users/sihun/workspace/study/claude-code-mastery/section-indv/ ubuntu@1.201.126.11:/var/www/claude-code-mastery/)",
+      "Bash(curl -sk -o /dev/null -w \"HTTP 상태코드: %{http_code}\\\\n\" http://1.201.126.11)",
+      "Bash(curl -sk -o /dev/null -w \"HTTPS 상태코드: %{http_code}\\\\n\" https://1.201.126.11)",
+      "Bash(curl -sk -o /dev/null -w \"HTTP: %{http_code}\\\\n\" http://1.201.126.11)",
+      "Bash(curl -sk -o /dev/null -w \"HTTPS: %{http_code}\\\\n\" https://1.201.126.11)",
+      "Bash(curl -s -o /dev/null -w \"HTTP: %{http_code}\\\\n\" http://claude.guide.dolgogae.cloud)",
+      "Bash(curl -s -o /dev/null -w \"HTTPS: %{http_code}\\\\n\" https://claude.guide.dolgogae.cloud)",
+      "Bash(rsync:*)",
+      "Bash(python3 *)"
+    ]
+  }
+}
