@@ -31,7 +31,8 @@ if (scrollTopBtn) {
 // ===== 코드 복사 버튼 =====
 document.querySelectorAll('.copy-btn').forEach(btn => {
   btn.addEventListener('click', () => {
-    const pre = btn.closest('.code-block')?.querySelector('pre');
+    const container = btn.closest('.code-block, .prompt-block');
+    const pre = container?.querySelector('pre');
     if (!pre) return;
     navigator.clipboard.writeText(pre.textContent).then(() => {
       btn.textContent = '복사됨!';
