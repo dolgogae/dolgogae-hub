@@ -99,42 +99,13 @@
     </div>
   </section>
 
-  <!-- ─────────────────────────────────────────
-       사이트 카드 목록
-       새 카드를 추가할 때는 아래 <a> 블록을 복사해서
-       붙여넣고 href / 이모지 / 제목 / 설명 / 태그를 수정하세요.
-       자세한 방법은 GUIDE.md를 참고하세요.
-  ───────────────────────────────────────── -->
+  <!-- ───────────────────────────────────────── -->
   <main class="relative z-10 max-w-5xl mx-auto px-6 pb-24 flex-1">
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
 
-      <!-- CARD: Claude Guide -->
-      <a href="https://claude.guide.dolgogae.cloud"
-         target="_blank" rel="noopener noreferrer"
-         class="glass-card rounded-2xl p-6 flex flex-col gap-4 cursor-pointer group">
-        <div class="flex items-start justify-between">
-          <span class="text-4xl leading-none">🤖</span>
-          <span class="tag-pill">Guide</span>
-        </div>
-        <div class="flex-1">
-          <h2 class="card-title font-bold text-base text-white mb-1.5 transition-colors">Claude Guide</h2>
-          <p class="text-sm text-white/45 leading-relaxed">Claude를 더 잘 활용하기 위한 가이드 사이트.</p>
-        </div>
-        <div class="card-footer flex items-center gap-1.5 text-xs text-white/25 transition-colors font-medium">
-          <span>claude.guide.dolgogae.cloud</span>
-          <svg class="arrow-icon w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
-            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
-          </svg>
-        </div>
-      </a>
-      <!-- /CARD -->
-
-    </div>
-
-    <!-- ─── About Me ─── -->
-    <section class="mt-20">
+    <!-- ─── About ─── -->
+    <section class="mb-16">
       <h2 class="text-xl font-bold mb-6">
-        <span class="gradient-text">About Me</span>
+        <span class="gradient-text">About</span>
       </h2>
       <div class="glass-card rounded-2xl p-8">
         <p class="text-sm text-white/60 leading-relaxed mb-4">
@@ -153,8 +124,43 @@
       </div>
     </section>
 
+    <!-- ─── Services ───
+         새 카드를 추가할 때는 아래 <a> 블록을 복사해서
+         붙여넣고 href / 이모지 / 제목 / 설명 / 태그를 수정하세요.
+         자세한 방법은 GUIDE.md를 참고하세요.
+    ─────────────────── -->
+    <section class="mb-16">
+      <h2 class="text-xl font-bold mb-6">
+        <span class="gradient-text">Services</span>
+      </h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <!-- CARD: Claude Guide -->
+        <a href="https://claude.guide.dolgogae.cloud"
+           target="_blank" rel="noopener noreferrer"
+           class="glass-card rounded-2xl p-6 flex flex-col gap-4 cursor-pointer group">
+          <div class="flex items-start justify-between">
+            <span class="text-4xl leading-none">🤖</span>
+            <span class="tag-pill">Guide</span>
+          </div>
+          <div class="flex-1">
+            <h2 class="card-title font-bold text-base text-white mb-1.5 transition-colors">Claude Guide</h2>
+            <p class="text-sm text-white/45 leading-relaxed">Claude를 더 잘 활용하기 위한 가이드 사이트.</p>
+          </div>
+          <div class="card-footer flex items-center gap-1.5 text-xs text-white/25 transition-colors font-medium">
+            <span>claude.guide.dolgogae.cloud</span>
+            <svg class="arrow-icon w-3.5 h-3.5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+            </svg>
+          </div>
+        </a>
+        <!-- /CARD -->
+
+      </div>
+    </section>
+
     <!-- ─── Project Highlights ─── -->
-    <section class="mt-16">
+    <section class="mb-8">
       <h2 class="text-xl font-bold mb-6">
         <span class="gradient-text">Project Highlights</span>
       </h2>
@@ -185,61 +191,6 @@
           </a>
         </div>
         <!-- /Highlight -->
-
-      </div>
-    </section>
-
-    <!-- ─── Writing / Notes ─── -->
-    <section class="mt-16 mb-8">
-      <h2 class="text-xl font-bold mb-6">
-        <span class="gradient-text">Notes</span>
-      </h2>
-      <div class="flex flex-col gap-4">
-
-        <!-- Note 1 -->
-        <div class="glass-card rounded-2xl p-8">
-          <div class="flex items-start justify-between mb-3">
-            <h3 class="font-bold text-base text-white">Claude를 실무에서 쓰는 법 — 내가 배운 것들</h3>
-            <span class="text-xs text-white/25 shrink-0 ml-4">2025년 5월</span>
-          </div>
-          <p class="text-sm text-white/60 leading-relaxed mb-3">
-            처음 Claude를 쓰기 시작했을 때 저는 "질문을 잘하면 되겠지"라고 생각했습니다. 틀린 말은 아니지만, 실무에 적용하면서 배운 건 조금 달랐습니다.
-            가장 중요한 건 컨텍스트를 명확하게 주는 것입니다. "코드를 리뷰해줘"보다 "이 함수는 결제 처리에 쓰이는데, 에러 핸들링이 충분한지 봐줘"처럼
-            목적과 배경을 함께 주면 결과물의 품질이 크게 달라집니다.
-          </p>
-          <p class="text-sm text-white/60 leading-relaxed mb-3">
-            두 번째로 배운 건 역할을 부여하는 것의 효과입니다. "시니어 백엔드 개발자로서 이 설계를 검토해줘"처럼 페르소나를 주면
-            더 날카로운 피드백이 나옵니다. 세 번째는 한 번의 긴 대화보다 짧은 대화를 여러 번 하는 게 나을 때가 많다는 점입니다.
-            컨텍스트가 길어질수록 앞부분의 지시를 잊어버리는 경향이 있기 때문입니다.
-          </p>
-          <p class="text-sm text-white/60 leading-relaxed">
-            지금은 Claude를 코드 리뷰, 문서 초안 작성, 설계 검토 등에 매일 쓰고 있습니다.
-            단순 자동화 도구가 아니라 함께 생각하는 파트너로 활용하는 방법을 계속 실험 중입니다.
-          </p>
-        </div>
-        <!-- /Note 1 -->
-
-        <!-- Note 2 -->
-        <div class="glass-card rounded-2xl p-8">
-          <div class="flex items-start justify-between mb-3">
-            <h3 class="font-bold text-base text-white">정적 사이트가 여전히 좋은 이유</h3>
-            <span class="text-xs text-white/25 shrink-0 ml-4">2025년 5월</span>
-          </div>
-          <p class="text-sm text-white/60 leading-relaxed mb-3">
-            이 허브와 Claude Guide 모두 빌드 도구 없이 순수 HTML/CSS/JS로 만들었습니다. 처음에는 "그냥 Next.js 쓰면 안 되나?"라는 생각도 했지만,
-            막상 만들어보니 정적 사이트의 장점이 확실히 있었습니다.
-            로컬에서 파일을 저장하고 rsync 한 줄로 서버에 올리면 끝입니다. CI/CD 파이프라인도, 빌드 실패도 없습니다.
-          </p>
-          <p class="text-sm text-white/60 leading-relaxed mb-3">
-            성능 측면에서도 좋습니다. 서버사이드 렌더링이나 번들링 과정이 없으니 TTFB가 매우 짧습니다.
-            Tailwind CDN과 Google Fonts를 쓰는 것만 제외하면 외부 의존성도 거의 없어서, 몇 년 뒤에도 코드가 그대로 동작할 것입니다.
-          </p>
-          <p class="text-sm text-white/60 leading-relaxed">
-            물론 블로그나 대규모 콘텐츠 사이트라면 CMS나 프레임워크가 맞습니다. 하지만 포트폴리오 허브처럼 작고 명확한 목적의 사이트라면
-            정적 HTML이 과잉 엔지니어링 없이 빠르게 운영할 수 있는 최선의 선택입니다.
-          </p>
-        </div>
-        <!-- /Note 2 -->
 
       </div>
     </section>
