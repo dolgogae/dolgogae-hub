@@ -4,262 +4,390 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dolgogae HUB</title>
+  <meta name="description" content="다양한 웹 서비스와 도구를 한곳에서 탐색하세요. AI 활용법부터 실용적인 웹 도구까지 폭넓은 주제를 다룹니다.">
   <meta name="google-adsense-account" content="ca-pub-7252750535082394">
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7252750535082394"
-     crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7252750535082394" crossorigin="anonymous"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
     * { font-family: 'Inter', sans-serif; }
+    body { background: #ffffff; color: #0f172a; overflow-x: hidden; }
 
-    body {
-      background: #0a0a0a;
-      overflow-x: hidden;
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #0e5f6e; color: #ffffff;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
+      transition: background 0.18s ease, transform 0.15s ease;
+      text-decoration: none;
     }
+    .btn-primary:hover { background: #0a4f5c; transform: translateY(-1px); }
 
-    /* ── Cards ── */
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: transparent; color: #374151;
+      font-size: 0.8rem; font-weight: 600;
+      padding: 10px 20px; border-radius: 8px;
+      border: 1px solid #d1d5db;
+      transition: border-color 0.18s ease, color 0.18s ease;
+      text-decoration: none;
+    }
+    .btn-outline:hover { border-color: #9ca3af; color: #111827; }
+
     .card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.07);
-      border-radius: 12px;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease;
     }
-    .card:hover {
-      background: rgba(255, 255, 255, 0.055);
-      border-color: rgba(255, 255, 255, 0.14);
+    .card:hover { box-shadow: 0 4px 24px rgba(0,0,0,0.08); border-color: #d1d5db; }
+
+    .card-service {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      transition: box-shadow 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+      text-decoration: none; color: inherit;
+      display: flex; flex-direction: column; gap: 16px;
     }
-    .card-link:hover .card-title { color: #ffffff; }
-    .card-link:hover .arrow-icon { transform: translate(2px, -2px); }
+    .card-service:hover {
+      box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+      border-color: #0e5f6e;
+      transform: translateY(-2px);
+    }
+    .card-service:hover .service-title { color: #0e5f6e; }
+    .card-service:hover .arrow-icon { transform: translate(2px, -2px); }
     .arrow-icon { transition: transform 0.18s ease; }
 
-    /* ── Coming soon cards ── */
-    .card-muted {
-      background: rgba(255, 255, 255, 0.015);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-      border-radius: 12px;
+    .card-soon {
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
     }
 
-    /* ── Tag ── */
     .tag {
-      font-size: 0.68rem;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(255, 255, 255, 0.07);
-      color: rgba(255, 255, 255, 0.4);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      letter-spacing: 0.02em;
+      font-size: 0.68rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      background: #f0fdf4; color: #166534;
+      border: 1px solid #bbf7d0;
     }
     .tag-soon {
-      font-size: 0.68rem;
-      font-weight: 500;
-      padding: 2px 8px;
-      border-radius: 4px;
-      background: rgba(99, 102, 241, 0.1);
-      color: rgba(129, 140, 248, 0.7);
-      border: 1px solid rgba(99, 102, 241, 0.2);
-      letter-spacing: 0.02em;
+      font-size: 0.68rem; font-weight: 600;
+      padding: 3px 10px; border-radius: 20px;
+      background: #f0f9ff; color: #0369a1;
+      border: 1px solid #bae6fd;
     }
 
-    /* ── Divider ── */
-    .section-divider {
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: #0e5f6e;
     }
 
-    /* ── Fade in ── */
+    .stat-number {
+      font-size: 2.5rem; font-weight: 900;
+      color: #0f172a; line-height: 1;
+    }
+
     @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
+      from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
     }
-    .fade-up { animation: fadeUp 0.45s ease-out forwards; }
-    .fade-up-2 { animation: fadeUp 0.45s 0.08s ease-out both; }
-    .fade-up-3 { animation: fadeUp 0.45s 0.16s ease-out both; }
+    .fade-up   { animation: fadeUp 0.5s ease-out both; }
+    .fade-up-2 { animation: fadeUp 0.5s 0.1s ease-out both; }
+    .fade-up-3 { animation: fadeUp 0.5s 0.2s ease-out both; }
+
+    .hero-card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1), 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    .feature-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: #f0fdfa; border: 1px solid #99f6e4;
+      display: flex; align-items: center; justify-content: center;
+    }
   </style>
 </head>
-<body class="min-h-screen text-white flex flex-col">
+<body>
 
-  <!-- Header -->
-  <header class="px-6 py-5 section-divider" style="border-top: none; border-bottom: 1px solid rgba(255,255,255,0.06);">
-    <div class="max-w-4xl mx-auto flex items-center justify-between">
+  <!-- ── Header ── -->
+  <header style="border-bottom: 1px solid #f1f5f9;" class="sticky top-0 bg-white/95 backdrop-blur-sm z-50">
+    <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
       <div class="flex items-center gap-2">
         <div class="w-7 h-7 rounded-md flex items-center justify-center text-xs font-black text-white"
-             style="background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.1);">D</div>
-        <span class="font-semibold text-sm text-white/80 tracking-tight">Dolgogae HUB</span>
+             style="background: #0e5f6e;">D</div>
+        <span class="font-bold text-sm text-gray-900">Dolgogae HUB</span>
       </div>
-      <span class="text-xs text-white/25 font-medium tracking-widest uppercase">Hub</span>
+      <nav class="hidden sm:flex items-center gap-6">
+        <a href="#about"    class="text-sm text-gray-500 hover:text-gray-900 transition-colors">About</a>
+        <a href="#services" class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Services</a>
+        <a href="#roadmap"  class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Roadmap</a>
+        <a href="#contact"  class="text-sm text-gray-500 hover:text-gray-900 transition-colors">Contact</a>
+      </nav>
+      <a href="#services" class="btn-primary">서비스 탐색</a>
     </div>
   </header>
 
-  <!-- Hero -->
-  <section class="px-6 pt-20 pb-16">
-    <div class="max-w-4xl mx-auto fade-up">
-      <h1 class="text-4xl sm:text-5xl font-black text-white leading-tight tracking-tight">
-        Dolgogae HUB
-      </h1>
-      <p class="mt-4 text-base text-white/45 leading-relaxed max-w-xl">
-        다양한 웹 서비스와 도구를 한곳에서 탐색하세요.<br>
-        AI 활용법부터 실용적인 웹 도구까지 폭넓은 주제를 다룹니다.
-      </p>
+  <!-- ── Hero ── -->
+  <section class="max-w-5xl mx-auto px-6 pt-20 pb-24">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      <div class="fade-up">
+        <p class="section-label mb-4">Dolgogae HUB</p>
+        <h1 class="text-4xl sm:text-5xl font-black text-gray-900 leading-tight tracking-tight mb-5">
+          필요한 도구와<br>가이드를 한곳에서.
+        </h1>
+        <p class="text-base text-gray-500 leading-relaxed mb-8 max-w-sm">
+          AI 활용법부터 실용적인 웹 도구까지.<br>
+          실제 경험을 바탕으로 만든 서비스들을 탐색해보세요.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="#services" class="btn-primary">
+            서비스 살펴보기
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="#roadmap" class="btn-outline">로드맵 보기</a>
+        </div>
+      </div>
+
+      <!-- Hero visual card -->
+      <div class="fade-up-2 hidden lg:block">
+        <div class="hero-card p-6">
+          <div class="flex items-center justify-between mb-5">
+            <span class="text-xs font-semibold text-gray-400 uppercase tracking-widest">현재 서비스</span>
+            <span class="tag">Live</span>
+          </div>
+          <a href="https://claude.guide.dolgogae.cloud" target="_blank" rel="noopener noreferrer"
+             class="flex items-start gap-4 p-4 rounded-xl hover:bg-gray-50 transition-colors group">
+            <div class="text-3xl flex-shrink-0">🤖</div>
+            <div class="flex-1">
+              <p class="font-bold text-sm text-gray-900 mb-1 group-hover:text-teal-700 transition-colors">Claude Guide</p>
+              <p class="text-xs text-gray-400 leading-relaxed">Claude를 더 잘 활용하기 위한 가이드 사이트</p>
+            </div>
+            <svg class="arrow-icon w-4 h-4 text-gray-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </a>
+          <div style="border-top: 1px solid #f1f5f9;" class="mt-4 pt-4 flex items-center gap-2">
+            <span class="text-xs text-gray-400">claude.guide.dolgogae.cloud</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <main class="max-w-4xl mx-auto px-6 pb-24 flex-1 w-full">
-
-    <!-- ─── About ─── -->
-    <section class="mb-16 fade-up-2">
-      <h2 class="text-xs font-semibold text-white/30 tracking-widest uppercase mb-4">About</h2>
-      <div class="card p-6">
-        <p class="text-sm text-white/55 leading-relaxed mb-3">
-          Dolgogae HUB는 다양한 웹 서비스와 도구를 한곳에서 탐색할 수 있도록 만든 통합 허브입니다.
-          각각의 서비스는 독립적으로 운영되며, 개발 가이드부터 실용적인 웹 도구까지 폭넓은 주제를 다룹니다.
-        </p>
-        <p class="text-sm text-white/55 leading-relaxed mb-3">
-          이 허브에 연결된 서비스들은 실제 사용 경험을 바탕으로 기획되었습니다.
-          복잡한 기술도 누구나 쉽게 접근할 수 있도록 풀어내는 것을 목표로 하며,
-          AI 활용법, 개발 환경 설정, 생산성 도구 등 실무에 바로 적용할 수 있는 콘텐츠를 지속적으로 추가하고 있습니다.
-        </p>
-        <p class="text-sm text-white/55 leading-relaxed">
-          Dolgogae HUB는 단순한 링크 모음이 아니라, 각 서비스가 유기적으로 연결되어 더 나은 사용 경험을 제공하는 플랫폼을 지향합니다.
-          앞으로 더 많은 서비스와 콘텐츠가 추가될 예정입니다.
+  <!-- ── About / Features ── -->
+  <section id="about" style="background: #f8fafc; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <div class="max-w-xl mb-12">
+        <p class="section-label mb-3">About</p>
+        <h2 class="text-2xl sm:text-3xl font-black text-gray-900 leading-snug tracking-tight mb-4">
+          실제 경험을 기반으로<br>기획된 서비스들
+        </h2>
+        <p class="text-sm text-gray-500 leading-relaxed">
+          복잡한 기술도 누구나 쉽게 접근할 수 있도록 풀어내는 것을 목표로 합니다.
+          실무에 바로 적용할 수 있는 콘텐츠를 지속적으로 추가하고 있습니다.
         </p>
       </div>
-    </section>
-
-    <!-- ─── Services ───
-         새 카드를 추가할 때는 아래 <a> 블록을 복사해서
-         붙여넣고 href / 이모지 / 제목 / 설명 / 태그를 수정하세요.
-    ─────────────────── -->
-    <section class="mb-16 fade-up-3">
-      <h2 class="text-xs font-semibold text-white/30 tracking-widest uppercase mb-4">Services</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-
-        <!-- CARD: Claude Guide -->
-        <a href="https://claude.guide.dolgogae.cloud"
-           target="_blank" rel="noopener noreferrer"
-           class="card card-link p-5 flex flex-col gap-3 cursor-pointer">
-          <div class="flex items-start justify-between">
-            <span class="text-2xl leading-none">🤖</span>
-            <span class="tag">Guide</span>
-          </div>
-          <div class="flex-1">
-            <h3 class="card-title font-semibold text-sm text-white/80 mb-1 transition-colors">Claude Guide</h3>
-            <p class="text-xs text-white/35 leading-relaxed">Claude를 더 잘 활용하기 위한 가이드 사이트.</p>
-          </div>
-          <div class="flex items-center justify-between pt-1">
-            <span class="text-xs text-white/20 font-medium">claude.guide.dolgogae.cloud</span>
-            <svg class="arrow-icon w-3.5 h-3.5 text-white/25 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div>
+          <div class="feature-icon mb-4">
+            <svg class="w-5 h-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/>
             </svg>
           </div>
-        </a>
-        <!-- /CARD -->
-
-      </div>
-    </section>
-
-    <!-- ─── Project Highlights ─── -->
-    <section class="mb-16">
-      <h2 class="text-xs font-semibold text-white/30 tracking-widest uppercase mb-4">Project Highlights</h2>
-      <div class="flex flex-col gap-3">
-
-        <!-- Highlight: Claude Guide -->
-        <div class="card p-6">
-          <div class="flex items-center gap-2.5 mb-3">
-            <span class="text-lg">🤖</span>
-            <span class="font-semibold text-sm text-white/80">Claude Guide</span>
-            <span class="tag">Guide</span>
-          </div>
-          <p class="text-sm text-white/50 leading-relaxed mb-2">
-            Claude를 처음 쓰는 사람도, 어느 정도 써본 사람도 "이걸 어디서부터 제대로 배워야 하지?"라는 고민을 합니다.
-            Claude Guide는 그 질문에 답하기 위해 만든 가이드 사이트입니다.
-            공식 문서에서 잘 설명되지 않는 프롬프트 패턴, 실무에서 바로 쓸 수 있는 예시 중심으로 구성했습니다.
-          </p>
-          <p class="text-sm text-white/50 leading-relaxed">
-            빌드 도구 없이 정적 HTML로 만들었고, 콘텐츠 추가와 서버 배포 모두 간단하게 유지하는 것을 원칙으로 합니다.
-            실제로 Claude를 써가며 발견한 것들을 지속적으로 업데이트할 예정입니다.
-          </p>
-          <a href="https://claude.guide.dolgogae.cloud" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-1 mt-4 text-xs text-white/35 hover:text-white/60 transition-colors font-medium">
-            사이트 방문하기
-            <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
+          <h3 class="font-bold text-sm text-gray-900 mb-2">AI 활용 가이드</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">Claude, GPT 등 AI 도구를 실무에서 효과적으로 활용하는 방법을 다룹니다.</p>
+        </div>
+        <div>
+          <div class="feature-icon mb-4">
+            <svg class="w-5 h-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
             </svg>
-          </a>
+          </div>
+          <h3 class="font-bold text-sm text-gray-900 mb-2">실용적인 웹 도구</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">개발 환경 설정부터 생산성 향상 도구까지, 바로 써먹을 수 있는 서비스를 제공합니다.</p>
         </div>
-        <!-- /Highlight -->
-
-      </div>
-    </section>
-
-    <!-- ─── Roadmap ─── -->
-    <section class="mb-16">
-      <h2 class="text-xs font-semibold text-white/30 tracking-widest uppercase mb-4">Coming Soon</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-
-        <div class="card-muted p-5 flex flex-col gap-3">
-          <div class="flex items-start justify-between">
-            <span class="text-2xl leading-none opacity-40">🛠️</span>
-            <span class="tag-soon">Dev Tool</span>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-semibold text-sm text-white/30 mb-1">Dev Toolbox</h3>
-            <p class="text-xs text-white/20 leading-relaxed">개발자를 위한 실용적인 온라인 도구 모음.</p>
-          </div>
-          <span class="text-xs text-white/15 font-medium">준비 중</span>
-        </div>
-
-        <div class="card-muted p-5 flex flex-col gap-3">
-          <div class="flex items-start justify-between">
-            <span class="text-2xl leading-none opacity-40">📚</span>
-            <span class="tag-soon">Learning</span>
-          </div>
-          <div class="flex-1">
-            <h3 class="font-semibold text-sm text-white/30 mb-1">Tech Notes</h3>
-            <p class="text-xs text-white/20 leading-relaxed">개발 경험과 기술 인사이트를 정리한 노트 모음.</p>
-          </div>
-          <span class="text-xs text-white/15 font-medium">준비 중</span>
-        </div>
-
-      </div>
-    </section>
-
-    <!-- ─── Contact ─── -->
-    <section class="mb-4">
-      <h2 class="text-xs font-semibold text-white/30 tracking-widest uppercase mb-4">Contact</h2>
-      <div class="card p-6">
-        <p class="text-sm text-white/50 leading-relaxed mb-5">
-          서비스 관련 문의, 피드백, 협업 제안은 아래 채널로 연락해 주세요.
-        </p>
-        <div class="flex flex-wrap gap-3">
-          <a href="mailto:ohsh0731@gmail.com"
-             class="inline-flex items-center gap-2 text-xs text-white/40 hover:text-white/70 transition-colors font-medium border border-white/8 hover:border-white/15 rounded-md px-3 py-2">
-            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <div>
+          <div class="feature-icon mb-4">
+            <svg class="w-5 h-5 text-teal-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/>
             </svg>
-            ohsh0731@gmail.com
-          </a>
-          <a href="https://github.com/dolgogae" target="_blank" rel="noopener noreferrer"
-             class="inline-flex items-center gap-2 text-xs text-white/40 hover:text-white/70 transition-colors font-medium border border-white/8 hover:border-white/15 rounded-md px-3 py-2">
-            <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
-            GitHub
-          </a>
+          </div>
+          <h3 class="font-bold text-sm text-gray-900 mb-2">지속적인 업데이트</h3>
+          <p class="text-sm text-gray-500 leading-relaxed">단순 링크 모음이 아닌, 각 서비스가 유기적으로 연결되어 성장하는 플랫폼을 지향합니다.</p>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-  </main>
+  <!-- ── Services ── -->
+  <section id="services" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="flex items-end justify-between mb-10">
+      <div>
+        <p class="section-label mb-2">Services</p>
+        <h2 class="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight">현재 운영 중인 서비스</h2>
+      </div>
+    </div>
 
-  <!-- Footer -->
-  <footer class="py-6 section-divider">
-    <div class="max-w-4xl mx-auto px-6 flex items-center justify-between">
-      <span class="text-xs text-white/20">© 2025 Dolgogae HUB</span>
-      <a href="/privacy-policy"
-         class="text-xs text-white/25 hover:text-white/50 transition-colors">
-        개인정보처리방침
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <!-- CARD: Claude Guide -->
+      <a href="https://claude.guide.dolgogae.cloud"
+         target="_blank" rel="noopener noreferrer"
+         class="card-service p-5">
+        <div class="flex items-start justify-between">
+          <span class="text-3xl leading-none">🤖</span>
+          <span class="tag">Guide</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="service-title font-bold text-sm text-gray-900 mb-1.5 transition-colors">Claude Guide</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Claude를 더 잘 활용하기 위한 가이드 사이트. 프롬프트 패턴과 실무 예시를 다룹니다.</p>
+        </div>
+        <div class="flex items-center justify-between pt-1">
+          <span class="text-xs text-gray-400">claude.guide.dolgogae.cloud</span>
+          <svg class="arrow-icon w-4 h-4 text-gray-300 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+          </svg>
+        </div>
       </a>
+      <!-- /CARD -->
+
+    </div>
+  </section>
+
+  <!-- ── Stats ── -->
+  <section style="background: #f8fafc; border-top: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;">
+    <div class="max-w-5xl mx-auto px-6 py-16">
+      <p class="section-label mb-10 text-center">현황</p>
+      <div class="grid grid-cols-3 gap-8 text-center">
+        <div>
+          <p class="stat-number">1</p>
+          <p class="text-sm text-gray-500 mt-2">운영 중인 서비스</p>
+        </div>
+        <div>
+          <p class="stat-number">2+</p>
+          <p class="text-sm text-gray-500 mt-2">출시 예정 서비스</p>
+        </div>
+        <div>
+          <p class="stat-number">100%</p>
+          <p class="text-sm text-gray-500 mt-2">무료 이용</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Roadmap / Coming Soon ── -->
+  <section id="roadmap" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="mb-10">
+      <p class="section-label mb-2">Roadmap</p>
+      <h2 class="text-2xl sm:text-3xl font-black text-gray-900 tracking-tight mb-3">준비 중인 서비스</h2>
+      <p class="text-sm text-gray-500">곧 새로운 서비스가 추가될 예정입니다.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+      <div class="card-soon p-5 flex flex-col gap-3">
+        <div class="flex items-start justify-between">
+          <span class="text-3xl leading-none opacity-50">🛠️</span>
+          <span class="tag-soon">Dev Tool</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-bold text-sm text-gray-400 mb-1.5">Dev Toolbox</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">개발자를 위한 실용적인 온라인 도구 모음. JSON 포매터, 색상 변환, 정규식 테스터 등.</p>
+        </div>
+        <span class="text-xs text-gray-400 font-medium">준비 중</span>
+      </div>
+
+      <div class="card-soon p-5 flex flex-col gap-3">
+        <div class="flex items-start justify-between">
+          <span class="text-3xl leading-none opacity-50">📚</span>
+          <span class="tag-soon">Learning</span>
+        </div>
+        <div class="flex-1">
+          <h3 class="font-bold text-sm text-gray-400 mb-1.5">Tech Notes</h3>
+          <p class="text-xs text-gray-400 leading-relaxed">개발 경험과 기술 인사이트를 정리한 노트 모음. 실무에서 겪은 문제와 해결책을 공유합니다.</p>
+        </div>
+        <span class="text-xs text-gray-400 font-medium">준비 중</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── CTA Section ── -->
+  <section style="background: #0d2d3a;">
+    <div class="max-w-5xl mx-auto px-6 py-20">
+      <div class="max-w-xl">
+        <p class="text-xs font-bold tracking-widest uppercase text-teal-400 mb-4">지금 시작하세요</p>
+        <h2 class="text-3xl sm:text-4xl font-black text-white leading-snug tracking-tight mb-4">
+          더 많은 서비스가<br>추가될 예정입니다.
+        </h2>
+        <p class="text-sm text-white/50 leading-relaxed mb-8">
+          Dolgogae HUB는 계속 성장하고 있습니다.<br>
+          지금 바로 현재 운영 중인 서비스를 탐색해보세요.
+        </p>
+        <div class="flex items-center gap-3">
+          <a href="https://claude.guide.dolgogae.cloud" target="_blank" rel="noopener noreferrer"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white transition-all"
+             style="background: #0e5f6e;">
+            Claude Guide 방문하기
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+            </svg>
+          </a>
+          <a href="#roadmap"
+             class="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg text-sm font-bold text-white/60 hover:text-white transition-colors">
+            로드맵 보기
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7v10"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Contact ── -->
+  <section id="contact" class="max-w-5xl mx-auto px-6 py-20">
+    <div class="mb-8">
+      <p class="section-label mb-2">Contact</p>
+      <h2 class="text-2xl font-black text-gray-900 tracking-tight mb-2">문의하기</h2>
+      <p class="text-sm text-gray-500">서비스 관련 문의, 피드백, 협업 제안은 아래 채널로 연락해 주세요.</p>
+    </div>
+    <div class="flex flex-wrap gap-3">
+      <a href="mailto:ohsh0731@gmail.com"
+         class="card inline-flex items-center gap-2.5 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+        <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        </svg>
+        ohsh0731@gmail.com
+      </a>
+      <a href="https://github.com/dolgogae" target="_blank" rel="noopener noreferrer"
+         class="card inline-flex items-center gap-2.5 px-4 py-3 text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors">
+        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+        </svg>
+        GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- ── Footer ── -->
+  <footer style="border-top: 1px solid #f1f5f9; background: #f8fafc;">
+    <div class="max-w-5xl mx-auto px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <div class="w-6 h-6 rounded flex items-center justify-center text-xs font-black text-white"
+             style="background: #0e5f6e;">D</div>
+        <span class="text-sm font-semibold text-gray-700">Dolgogae HUB</span>
+      </div>
+      <p class="text-xs text-gray-400">© 2025 Dolgogae HUB. All rights reserved.</p>
+      <a href="/privacy-policy" class="text-xs text-gray-400 hover:text-gray-600 transition-colors">개인정보처리방침</a>
     </div>
   </footer>
 
